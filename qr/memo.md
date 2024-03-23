@@ -1,0 +1,2 @@
+# QR 생성하기
+다음 [블로그 참고](https://disquiet.io/@woongsnote/makerlog/qr-%EC%BD%94%EB%93%9C-%EC%83%9D%EC%84%B1%EA%B8%B0-%EB%A7%8C%EB%93%A4%EA%B8%B0-next-js%EC%99%80-type-script%EB%A1%9C-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-1694364824636) 해서 시도
