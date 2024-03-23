@@ -1,6 +1,5 @@
 import QRGenerator from "./QRGenerator";
 
-
 export default function Qr() {
     return (
         <div>

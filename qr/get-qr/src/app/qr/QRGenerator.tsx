@@ -1,11 +1,11 @@
 "use client"; // useState 사용을 위해, client component 사용
 
 import { useState } from "react";
-// import saveAs from "file-saver";
+import saveAs from "file-saver";
 import QRCode from "react-qr-code";
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import QRCodeInput from "../_component/QRCodeInput";
-// import Button from "./Button";
+import Button from "../_component/Button";
 
 const QRGenerator = () => {
   const [qrData, setQrData] = useState<string>("");
@@ -22,19 +22,40 @@ const QRGenerator = () => {
     }
   };
 
+  const saveQRCode = () => {
+    if (isGenerated) {
+      const svgString = document.querySelector("svg")?.outerHTML;
+      
+      if (!svgString) return;
+
+      const blob = new Blob([svgString], { type: "image/svg+xml" });
+      saveAs(blob, "qrcode.svg");
+    }
+  };
+
   return (
     <>
       <QRCodeInput value={qrData} onChange={handleInputChange} />
-      {/* <Button
+      <Button
         onClick={generateQRCode}
         disabled={qrData === ""}
         title="Generate QR Code"
-      /> */}
+      />
       {isGenerated && (
         <>
-          <div className="border p-2">
+          <motion.div
+            className="border p-2"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
             <QRCode value={qrData} />
-          </div>
+          </motion.div>
+          <Button
+            onClick={saveQRCode}
+            disabled={!isGenerated}
+            title="Save QR Code"
+          />
         </>
       )}
     </>
